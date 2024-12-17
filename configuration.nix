@@ -84,6 +84,7 @@
     isNormalUser = true;
     description = "Wesley Truong";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -99,6 +100,7 @@
     wget
     git
     libgcc
+    xclip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -137,4 +139,6 @@
     enable = true;
     polkitPolicyOwners = [ "wesleyt" ];
   };
+
+  programs.zsh.enable = true;
 }

@@ -17,13 +17,19 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    # pkgs.hello
+    # hello
 
-    pkgs.wezterm
-    pkgs.neovim
+    wezterm
+    kitty
+    neovim
+    ripgrep
+    oh-my-zsh
+    neofetch
+    lazygit
+    inputs.zen-browser.packages."${system}".specific
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -74,11 +80,21 @@
     EDITOR = "nvim";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+# Let Home Manager install and manage itself.
+  programs = {
+    home-manager.enable = true;
 
-  programs.wezterm = {
-    enable = true;
-    # package = inputs.wezterm.packages.${pkgs.system}.default;
+    wezterm = {
+      enable = true;
+# package = inputs.wezterm.packages.${pkgs.system}.default;
+    };
+    
+    zsh = {
+      enable = true;
+    };
   };
+
+  # programs.zsh.ohMyZsh.enable = true;
+
+  systemd.user.startServices = "sd-switch";
 }
