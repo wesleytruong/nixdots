@@ -83,6 +83,12 @@
 # Let Home Manager install and manage itself.
   programs = {
     home-manager.enable = true;
+    
+    git = {
+      enable = true;
+      userName = "wesleytruong";
+      userEmail = "wesleytruong@ucsb.edu";
+    };
 
     wezterm = {
       enable = true;
@@ -93,6 +99,7 @@
       enable = true;
     };
   };
+
 
   # programs.zsh.ohMyZsh.enable = true;
 
